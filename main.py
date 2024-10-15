@@ -6,7 +6,8 @@ app = Flask(__name__)
 VERIFY_TOKEN = 'my_verify_token'
 ACCESS_TOKEN = 'EAAWbQZCzFS0YBOxXeltZCmb5nkp74RXOeqGJTWZAPEqSW2lkkbZADV5W6ZAZBsu8Xbthsx0BcPNpyiXZBlgPveYZBvp8HshPzFrnANEjTy3ZCmTsQvaE4alClev7X7vgTcZAmJyZAHLJFTHhAvAQPC5znFSwvsIpRalyC30FQisXSDQZBpVFmMa15yZCGj1hgYxgUFZAz0zXoMlz3xsJnZBIc6ZCdNVcZC6qjKZA8ZD'
 
-INSTAGRAM_APP_ID = '17841403722404968'
+# Замените на правильный Instagram Business Account ID
+INSTAGRAM_BUSINESS_ACCOUNT_ID = '17841403722404968'  # Instagram Business Account ID
 INSTAGRAM_API_VERSION = 'v21.0'
 
 @app.route('/webhook', methods=['GET'])
@@ -31,7 +32,7 @@ def webhook():
     return "OK", 200
 
 def send_message(sender_id, message_text):
-    url = f"https://graph.facebook.com/{INSTAGRAM_API_VERSION}/{INSTAGRAM_APP_ID}/messages"
+    url = f"https://graph.facebook.com/{INSTAGRAM_API_VERSION}/{INSTAGRAM_BUSINESS_ACCOUNT_ID}/messages"
     headers = {
         'Authorization': f'Bearer {ACCESS_TOKEN}',
         'Content-Type': 'application/json'
