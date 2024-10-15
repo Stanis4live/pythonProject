@@ -55,7 +55,7 @@ def send_message(sender_id, message_text):
         }
     }
 
-    response = requests.post(url, json=payload, headers=headers)
+    response = requests.post(url, json=payload, headers=headers, verify=False)
     print(f"Ответ отправлен: {response.status_code}, {response.text}")
 
 
