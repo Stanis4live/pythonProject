@@ -20,5 +20,5 @@ def webhook():
     return "OK", 200
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, ssl_context=('/etc/ssl/certs/selfsigned.crt', '/etc/ssl/private/selfsigned.key'))
+    app.run(host='0.0.0.0', port=5000, ssl_context=('/etc/letsencrypt/live/stanis4live.su/fullchain.pem', '/etc/letsencrypt/live/stanis4live.su/privkey.pem'))
 
