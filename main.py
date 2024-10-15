@@ -33,7 +33,6 @@ def webhook():
 
 def send_message(sender_id, message_text):
     url = f"https://graph.facebook.com/{INSTAGRAM_API_VERSION}/me/messages"
-    print(f"url {url}")
     headers = {
         'Authorization': f'Bearer {ACCESS_TOKEN}',
         'Content-Type': 'application/json'
@@ -47,8 +46,10 @@ def send_message(sender_id, message_text):
         }
     }
 
+    print(sender_id, headers)
     # Отправляем запрос
     response = requests.post(url, json=payload, headers=headers, verify=False)
+    print(f"responce {response}")
     print(f"Ответ отправлен: {response.status_code}, {response.text}")
 
 if __name__ == '__main__':
