@@ -1,13 +1,19 @@
+import os
+
 import requests
 from flask import Flask, request, jsonify
+from dotenv import load_dotenv
+
+# Загрузка переменных из .env
+load_dotenv()
 
 app = Flask(__name__)
 
-VERIFY_TOKEN = 'my_verify_token'
-ACCESS_TOKEN = 'IGQWRQTlo0ZA0JDYW5EanQ2LVhoWUhxT1BDNjhKRU9hcmYzRnNRVXdULW1pM1NQM252ZAW1FcGVZAVWpHNm1HUkwzSzFaMU54Y1pfT0lKT2c4RzRaODVidTVtdG1yOXlaWEY4RHF5ZAzVZAcUNXc2pnTXFJVzFxVkxGRDQZD'
-
-IG_ID = '17841403722404968'
-INSTAGRAM_API_VERSION = 'v21.0'
+# Получение переменных окружения
+VERIFY_TOKEN = os.getenv('VERIFY_TOKEN')
+ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
+IG_ID = os.getenv('IG_ID')
+INSTAGRAM_API_VERSION = os.getenv('INSTAGRAM_API_VERSION')
 
 # Добавление пустой домашней страницы
 @app.route('/')
