@@ -4,10 +4,15 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 VERIFY_TOKEN = 'my_verify_token'
-ACCESS_TOKEN = 'EAAWbQZCzFS0YBOxXeltZCmb5nkp74RXOeqGJTWZAPEqSW2lkkbZADV5W6ZAZBsu8Xbthsx0BcPNpyiXZBlgPveYZBvp8HshPzFrnANEjTy3ZCmTsQvaE4alClev7X7vgTcZAmJyZAHLJFTHhAvAQPC5znFSwvsIpRalyC30FQisXSDQZBpVFmMa15yZCGj1hgYxgUFZAz0zXoMlz3xsJnZBIc6ZCdNVcZC6qjKZA8ZD'
+ACCESS_TOKEN = 'EAAWbQZCzFS0YBOxXeltZCmb5nkp74RXOeqGJTWZAPEqSW2lkkbZADV5W6ZAZBsu8Xbthsx0BcPNpyiXZBlgPveYZBvp8HshPzFrnANEjTy3ZCmTsQvaE4alClev7X7vgTcZAmJyZAHLJFTHhAvAQPC5znFSwvsIpRalyC30FQisXSDQZBpVFmMa15yZCGj1hgYxgUFZAz0zXoMlz3xsJnZBIc6ZCdNVcZ6qjKZA8ZD'
 
 INSTAGRAM_APP_ID = '27006061152371078'
 INSTAGRAM_API_VERSION = 'v21.0'
+
+# Добавление пустой домашней страницы
+@app.route('/')
+def home():
+    return "Welcome to the home page!", 200
 
 @app.route('/webhook', methods=['GET'])
 def verify():
@@ -51,3 +56,4 @@ def send_message(sender_id, message_text):
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, ssl_context=(
         '/etc/letsencrypt/live/stanis4live.su/fullchain.pem', '/etc/letsencrypt/live/stanis4live.su/privkey.pem'))
+
