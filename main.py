@@ -43,12 +43,17 @@ async def verify(request: Request):
 async def handle_webhook(data: WebhookRequest):
     print(f"Получено сообщение: {data}")
 
-    if 'messaging' in data.entry[0]:
-        sender_id = data.entry[0]['messaging'][0]['sender']['id']
-        message_text = data.entry[0]['messaging'][0]['message']['text']
-
-        response_text = f"Вы отправили: {message_text}"
-        await send_message(sender_id, response_text)
+    for entry in data.entry:
+        messaging_events = entry.get('messaging', [])
+        for event in messaging_events:
+            if 'message' in event:
+                sender_id = event['sender']['id']
+                message_text = event['message'].get('text')
+                if message_text:
+                    response_text = f"Вы отправили: {message_text}"
+                    await send_message(sender_id, response_text)
+            else:
+                print("Сообщение не содержит поля 'message'")
 
     return {"status": "ok"}
 
