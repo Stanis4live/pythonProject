@@ -73,7 +73,7 @@ async def send_message(sender_id: str, message_text: str):
         }
     }
 
-    response = requests.post(url, json=payload, headers=headers, verify=False)
+    response = requests.post(url, json=payload, headers=headers)
     print(f"Ответ отправлен: {response.status_code}, {response.text}")
 
 if __name__ == "__main__":
