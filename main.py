@@ -56,7 +56,7 @@ def send_message(sender_id, message_text):
         }
     }
 
-    response = requests.post(url, json=payload, headers=headers, verify=False)
+    response = requests.post(url, json=payload, headers=headers, verify='/etc/ssl/certs/ca-certificates.crt')
     print(f"Ответ отправлен: {response.status_code}, {response.text}")
 
 if __name__ == '__main__':
