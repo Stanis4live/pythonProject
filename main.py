@@ -4,9 +4,9 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 VERIFY_TOKEN = 'my_verify_token'
-ACCESS_TOKEN = 'EAAWbQZCzFS0YBOxU2QmcSa7CbCnfZBrDhyUgFvqxpSrwRWHxqV0nZCfd4ZB9TaQhGVKZC8AkhZC8bay7i3D2FZAZCoAA8Gtfio3Q4ZBqz3JDfplFutqAR8brywrb5EPWMU1eeExdchaPZCjkTrJit6Yol9yR3nZBfTDl9mZAitaulrqygUvidGlAC8zeiQezv82BXZBnxk7sbX8Xl4k3s1ZAWHMAZDZD'
+ACCESS_TOKEN = 'IGQWRQTlo0ZA0JDYW5EanQ2LVhoWUhxT1BDNjhKRU9hcmYzRnNRVXdULW1pM1NQM252ZAW1FcGVZAVWpHNm1HUkwzSzFaMU54Y1pfT0lKT2c4RzRaODVidTVtdG1yOXlaWEY4RHF5ZAzVZAcUNXc2pnTXFJVzFxVkxGRDQZD'
 
-INSTAGRAM_APP_ID = '27006061152371078'
+IG_ID = '17841403722404968'
 INSTAGRAM_API_VERSION = 'v21.0'
 
 # Добавление пустой домашней страницы
@@ -36,7 +36,7 @@ def webhook():
     return "OK", 200
 
 def send_message(sender_id, message_text):
-    url = f"https://graph.facebook.com/{INSTAGRAM_API_VERSION}/{INSTAGRAM_APP_ID}/messages"
+    url = f"https://graph.instagram.com/{INSTAGRAM_API_VERSION}/{IG_ID}/messages"
     headers = {
         'Authorization': f'Bearer {ACCESS_TOKEN}',
         'Content-Type': 'application/json'
